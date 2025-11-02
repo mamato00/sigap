@@ -18,7 +18,7 @@ class RankingTableWidget extends BaseWidget
         return $table
             ->query(
                 RankingPcaGt::query()
-                    ->orderBy('rank_pca')
+                    ->orderBy('rank_gt')
             )
             ->columns([
 
@@ -40,6 +40,17 @@ class RankingTableWidget extends BaseWidget
                         default => 'gray'
                     }),
 
+                Tables\Columns\TextColumn::make('rank_gt')
+                    ->label('Rank GT')
+                    ->sortable()
+                    ->alignCenter()
+                    ->badge()
+                    ->color(fn ($record) => match(true) {
+                        $record->rank_gt <= 3 => 'success',
+                        $record->rank_gt <= 10 => 'info',
+                        default => 'gray'
+                    }),
+
                 Tables\Columns\TextColumn::make('ikp')
                     ->label('IKP')
                     ->sortable()
@@ -54,16 +65,7 @@ class RankingTableWidget extends BaseWidget
                     ->numeric(decimalPlaces: 4)
                     ->color('warning'),
 
-                Tables\Columns\TextColumn::make('rank_gt')
-                    ->label('Rank GT')
-                    ->sortable()
-                    ->alignCenter()
-                    ->badge()
-                    ->color(fn ($record) => match(true) {
-                        $record->rank_gt <= 3 => 'success',
-                        $record->rank_gt <= 10 => 'info',
-                        default => 'gray'
-                    }),
+
 
                 Tables\Columns\TextColumn::make('selisih_rank')
                     ->label('Selisih')
@@ -83,9 +85,9 @@ class RankingTableWidget extends BaseWidget
                     ->alignCenter()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
-            ->defaultSort('rank_pca', 'asc')
+            ->defaultSort('rank_gt', 'asc')
             ->striped()
-            ->paginated([5, 10, 20, 50]);
+            ->paginated([4, 8, 16, 32]);
     }
 
     public static function canView(): bool
