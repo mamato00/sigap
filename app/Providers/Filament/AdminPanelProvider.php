@@ -21,6 +21,11 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 use App\Filament\Widgets\FoodSecurityStatsOverview;
+use App\Filament\Widgets\InflasiLineChartWidget;
+use App\Filament\Widgets\PetaAKPWidget;
+use App\Filament\Widgets\PetaAPPWidget;
+use App\Filament\Widgets\PetaKlasterWidget;
+use App\Filament\Widgets\RankingTableWidget;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -47,6 +52,11 @@ class AdminPanelProvider extends PanelProvider
             ->spa()
             ->widgets([
                 FoodSecurityStatsOverview::class,
+                InflasiLineChartWidget::class,
+                RankingTableWidget::class,
+                PetaKlasterWidget::class,
+                PetaAKPWidget::class,
+                PetaAPPWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
