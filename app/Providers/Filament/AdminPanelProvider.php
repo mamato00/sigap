@@ -11,6 +11,7 @@ use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
+use Filament\Navigation\MenuItem;
 use Filament\Support\Colors\Color;
 use Filament\Widgets;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
@@ -50,6 +51,12 @@ class AdminPanelProvider extends PanelProvider
             ->pages([])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->spa()
+            ->userMenuItems([
+                MenuItem::make()
+                    ->url('/')
+                    ->icon('heroicon-o-home')
+                    ->label('Beranda'),
+            ])
             ->widgets([
                 FoodSecurityStatsOverview::class,
                 InflasiLineChartWidget::class,

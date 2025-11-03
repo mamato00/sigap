@@ -33,9 +33,9 @@
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto">
-        <img src="/assets/img/logo.png" alt="">
-        <h1 class="sitename">SIGAP Pangan</h1>
+      <a href="index.html" class="d-flex align-items-center me-auto">
+        <img src="/assets/img/logo.png" alt="" style="width: 12em">
+        {{-- <h1 class="sitename">SIGAP Pangan</h1> --}}
       </a>
 
       <nav id="navmenu" class="navmenu">
@@ -46,19 +46,9 @@
           <li><a href="{{ route('home') }}#services">Layanan</a></li>
           <li class="dropdown"><a href="#"><span>Informasi</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <li><a href="#">Data Pangan</a></li>
-              <li class="dropdown"><a href="#"><span>Peta Interaktif</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Peta Ketersediaan Pangan</a></li>
-                  <li><a href="#">Peta Aksesibilitas Pangan</a></li>
-                  <li><a href="#">Peta Utilisasi Pangan</a></li>
-                  <li><a href="#">Peta Stabilitas Pangan</a></li>
-                  <li><a href="#">Peta Kerawanan Pangan</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Publikasi</a></li>
-              <li><a href="#">Berita</a></li>
-              <li><a href="#">FAQ</a></li>
+              <li><a href="{{ route('peringkat-pangan.index') }}">Data Pangan & Peringkat Ketahanan Pangan</a></li>
+              <li><a href="{{ route('peta-interaktif') }}">Peta Interaktif</a></li>
+              <li><a href="#faq">FAQ</a></li>
             </ul>
           </li>
           <li><a href="{{ route('home') }}#contact">Kontak</a></li>
@@ -80,7 +70,7 @@
       </div>
       <div class="container text-center">
         <div class="d-flex flex-column justify-content-center align-items-center">
-          <h1 data-aos="fade-up">Sistem Informasi Geospasial <span>Analisis Ketahanan Pangan</span></h1>
+          <h1 data-aos="fade-up">Sistem Informasi Geospasial<br><span>Analisis Ketahanan Pangan</span></h1>
           <p data-aos="fade-up" data-aos-delay="100">Platform terpadu untuk monitoring dan analisis ketahanan pangan berbasis geospasial di Indonesia<br></p>
           <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
             <a href="#about" class="btn-get-started">Mulai Sekarang</a>
@@ -157,24 +147,20 @@
             <a href="{{ 'admin' }}" class="read-more"><span>Baca Selengkapnya</span><i class="bi bi-arrow-right"></i></a>
           </div>
 
-          <div class="col-lg-6 about-images" data-aos="fade-up" data-aos-delay="200">
-            <div class="row gy-4">
-              <div class="col-lg-6">
-                <img src="/assets/img/about-company-1.jpg" class="img-fluid" alt="">
-              </div>
-              <div class="col-lg-6">
-                <div class="row gy-4">
-                  <div class="col-lg-12">
-                    <img src="/assets/img/about-company-2.jpg" class="img-fluid" alt="">
-                  </div>
-                  <div class="col-lg-12">
-                    <img src="/assets/img/about-company-3.jpg" class="img-fluid" alt="">
-                  </div>
+        <div class="col-lg-6 about-images" data-aos="fade-up" data-aos-delay="200">
+            <div class="row g-4 h-100">
+                <!-- Kolom Kiri: Gambar Utama -->
+                <div class="col-6 d-flex">
+                    <img src="/assets/img/about-company-1.jpg" class="img-fluid object-fit-cover" alt="Gambar Utama Perusahaan">
                 </div>
-              </div>
-            </div>
 
-          </div>
+                <!-- Kolom Kanan: Dua Gambar Bertumpuk -->
+                <div class="col-6 d-flex flex-column justify-content-between">
+                    <img src="/assets/img/about-company-2.jpg" class="img-fluid" alt="Gambar Kegiatan 1">
+                    <img src="/assets/img/about-company-3.jpg" class="img-fluid" alt="Gambar Kegiatan 2">
+                </div>
+            </div>
+        </div>
 
         </div>
 
@@ -492,79 +478,140 @@
 
     </section><!-- /More Features Section -->
 
-    <!-- Faq Section -->
+   <!-- Faq Section -->
     <section id="faq" class="faq section">
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
         <h2>Pertanyaan yang Sering Diajukan</h2>
-      </div><!-- End Section Title -->
+    </div>
+    <!-- End Section Title -->
 
-      <div class="container">
+    <div class="container">
 
         <div class="row justify-content-center">
-
-          <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
 
             <div class="faq-container">
 
-              <div class="faq-item faq-active">
-                <h3>Apa itu SIGAP Pangan dan bagaimana cara kerjanya?</h3>
+            <div class="faq-item faq-active">
+                <h3>Apa itu SIGAP?</h3>
                 <div class="faq-content">
-                  <p>SIGAP Pangan adalah Sistem Informasi Geospasial Analisis Ketahanan Pangan yang mengintegrasikan data spasial dan atribut dari berbagai sumber untuk menganalisis ketahanan pangan di Indonesia. Sistem ini bekerja dengan mengumpulkan data, memprosesnya menjadi informasi yang bermakna, dan memvisualisasikannya dalam bentuk peta interaktif dan dashboard analisis.</p>
+                <p>
+                    SIGAP adalah platform web yang menyediakan informasi geospasial dan analisis ketahanan pangan di tingkat desa dengan mengintegrasikan data satelit, data sosial-ekonomi, dan harga pangan untuk mendukung kebijakan berbasis bukti.
+                </p>
                 </div>
                 <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
+            </div>
+            <!-- End Faq item-->
 
-              <div class="faq-item">
-                <h3>Data apa saja yang tersedia di platform SIGAP Pangan?</h3>
+            <div class="faq-item">
+                <h3>Siapa yang menggunakan SIGAP?</h3>
                 <div class="faq-content">
-                  <p>Platform SIGAP Pangan menyediakan berbagai data terkait ketahanan pangan, termasuk data produksi pertanian, data distribusi pangan, data aksesibilitas fisik dan ekonomi, data konsumsi pangan, data harga pangan, data iklim, data sosial ekonomi, dan data infrastruktur terkait pangan. Semua data ini tersedia dalam berbagai tingkatan administratif dari nasional hingga desa.</p>
+                <p>
+                    Pengguna SIGAP meliputi Badan Pangan Nasional (Bapanas) sebagai pemilik dashboard nasional, Bappenas dan BPS untuk perencanaan kebijakan dan harmonisasi data, pemerintah provinsi dan kabupaten untuk monitoring lokal dan perencanaan intervensi, serta UNDP, FAO, dan ASEAN untuk interoperabilitas data dan pelaporan internasional.
+                </p>
                 </div>
                 <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
+            </div>
+            <!-- End Faq item-->
 
-              <div class="faq-item">
-                <h3>Bagaimana SIGAP Pangan dapat membantu pengambilan keputusan?</h3>
+            <div class="faq-item">
+                <h3>Dari mana data SIGAP berasal?</h3>
                 <div class="faq-content">
-                  <p>SIGAP Pangan membantu pengambilan keputusan dengan menyediakan visualisasi data yang mudah dipahami, analisis prediktif untuk mengidentifikasi area berisiko, dashboard monitoring real-time, dan laporan analisis komprehensif. Informasi ini memungkinkan pengambil keputusan untuk merencanakan intervensi yang tepat sasaran dan responsif terhadap tantangan ketahanan pangan.</p>
+                <p>
+                    Data SIGAP berasal dari berbagai sumber, termasuk data satelit seperti Sentinel-2, MODIS, dan SMAP, data sosial-ekonomi dari SUSENAS, PODES, serta data POI dari Google Maps atau OpenStreetMap, dan data pasar seperti harga pangan dari Bapanas, TPID, serta statistik rantai pasok.
+                </p>
                 </div>
                 <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
+            </div>
+            <!-- End Faq item-->
 
-              <div class="faq-item">
-                <h3>Apakah data di SIGAP Pangan diperbarui secara berkala?</h3>
+            <div class="faq-item">
+                <h3>Apa itu Spatial Food Security Index (SFSI)?</h3>
                 <div class="faq-content">
-                  <p>Ya, data di SIGAP Pangan diperbarui secara berkala sesuai dengan jadwal pembaruan dari sumber data asli. Data real-time seperti harga pangan diperbarui harian, data produksi pertanian diperbarui per musim tanam, dan data sensus atau survei diperbarui sesuai dengan periode pelaksanaan survei oleh instansi terkait.</p>
+                <p>
+                    Spatial Food Security Index atau SFSI adalah indikator yang dihasilkan SIGAP untuk mengukur ketahanan pangan di tingkat desa secara spasial dan dikategorikan menjadi rentan, sedang, atau tangguh.
+                </p>
                 </div>
                 <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
+            </div>
+            <!-- End Faq item-->
 
-              <div class="faq-item">
-                <h3>Bagaimana cara mendapatkan akses ke platform SIGAP Pangan?</h3>
+            <div class="faq-item">
+                <h3>Bagaimana SIGAP membantu kebijakan?</h3>
                 <div class="faq-content">
-                  <p>Anda dapat mendaftar untuk uji coba gratis 14 hari melalui website kami. Setelah periode uji coba, Anda dapat memilih paket berlangganan yang sesuai dengan kebutuhan Anda. Untuk institusi pemerintah atau organisasi besar dengan kebutuhan khusus, Anda dapat menghubungi tim kami untuk diskusi lebih lanjut tentang solusi kustomisasi.</p>
+                <p>
+                    SIGAP membantu kebijakan dengan menyediakan peta interaktif klaster pangan desa, sistem peringatan dini untuk area berisiko, simulasi skenario kebijakan, dasbor pengambil keputusan, dan laporan yang dapat diunduh untuk perencanaan intervensi.
+                </p>
                 </div>
                 <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
+            </div>
+            <!-- End Faq item-->
 
-              <div class="faq-item">
-                <h3>Apakah tersedia pelatihan untuk menggunakan platform SIGAP Pangan?</h3>
+            <div class="faq-item">
+                <h3>Apakah SIGAP bisa terhubung dengan sistem lain?</h3>
                 <div class="faq-content">
-                  <p>Ya, kami menyediakan pelatihan untuk pengguna platform SIGAP Pangan. Pelatihan mencakup pengenalan fitur dasar, analisis data, interpretasi hasil, dan penggunaan lanjutan untuk paket Profesional dan Enterprise. Pelatihan dapat dilakukan secara online atau tatap muka tergantung pada paket berlangganan Anda.</p>
+                <p>
+                    SIGAP dirancang agar dapat terhubung melalui API dengan portal Bapanas, TPID Inflasi, ASEAN Food Security Information System (AFSIS), dan berpotensi dikembangkan menjadi aplikasi mobile untuk laporan lapangan.
+                </p>
                 </div>
                 <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
+            </div>
+            <!-- End Faq item-->
+
+            <div class="faq-item">
+                <h3>Bagaimana keamanan dan privasi data dijaga?</h3>
+                <div class="faq-content">
+                <p>
+                    SIGAP mengikuti standar keamanan data pemerintah dan internasional dengan enkripsi, kontrol akses pengguna, dan audit log untuk menjaga keamanan dan privasi data sensitif.
+                </p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+            </div>
+            <!-- End Faq item-->
+
+            <div class="faq-item">
+                <h3>Apakah SIGAP hanya untuk pemerintah?</h3>
+                <div class="faq-content">
+                <p>
+                    Selain pemerintah, peneliti, LSM, dan lembaga internasional dapat mengakses data terbatas sesuai hak akses yang diberikan untuk mendukung penelitian, pelaporan, dan kolaborasi kebijakan.
+                </p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+            </div>
+            <!-- End Faq item-->
+
+            <div class="faq-item">
+                <h3>Bagaimana cara mendapatkan pelatihan atau dukungan teknis SIGAP?</h3>
+                <div class="faq-content">
+                <p>
+                    Instansi pemerintah dapat mengikuti pelatihan dan mendapatkan dukungan teknis dari tim SIGAP melalui workshop, modul daring, dan panduan penggunaan yang tersedia di portal.
+                </p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+            </div>
+            <!-- End Faq item-->
+
+            <div class="faq-item">
+                <h3>Apakah SIGAP sudah tersedia di seluruh Indonesia?</h3>
+                <div class="faq-content">
+                <p>
+                    Saat ini SIGAP sedang dalam fase pilot di beberapa provinsi seperti Sumatera Barat, Sulawesi Selatan, dan Jawa Tengah, dan akan diperluas secara nasional serta diintegrasikan ke interoperabilitas regional ASEAN dalam jangka menengah hingga panjang.
+                </p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+            </div>
+            <!-- End Faq item-->
 
             </div>
-
-          </div><!-- End Faq Column-->
-
+        </div>
         </div>
 
-      </div>
+    </div>
+    </section>
+    <!-- End Faq Section -->
 
-    </section><!-- /Faq Section -->
 
     <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials section light-background">
@@ -710,8 +757,8 @@
             <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="200">
               <i class="bi bi-geo-alt"></i>
               <h3>Alamat</h3>
-              <p>Jl. Merdeka No. 123, Jakarta Pusat</p>
-              <p>DKI Jakarta 10110</p>
+              <p>Jalan Jaksa Agung R. Soeprapto No. 19, Padang</p>
+              <p>Sumatera Barat</p>
             </div>
           </div><!-- End Info Item -->
 
@@ -719,7 +766,7 @@
             <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="300">
               <i class="bi bi-telephone"></i>
               <h3>Telepon</h3>
-              <p>+62 21 1234 5678</p>
+              <p>(0751) 7054161</p>
             </div>
           </div><!-- End Info Item -->
 
@@ -727,7 +774,7 @@
             <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="400">
               <i class="bi bi-envelope"></i>
               <h3>Email</h3>
-              <p>info@sigappangan.id</p>
+              <p>dinaspangansumbar@gmail.com</p>
             </div>
           </div><!-- End Info Item -->
 
@@ -735,7 +782,7 @@
 
         <div class="row gy-4 mt-1">
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48389.78314118045!2d-74.006138!3d40.710059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown%20Conference%20Center!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus" frameborder="0" style="border:0; width: 100%; height: 400px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.297565930191!2d100.3573606759091!3d-0.9257255990653214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd4b8d70b13eb11%3A0x8994cac843ae2fed!2sDinas%20Pangan%20Provinsi%20Sumatera%20Barat!5e0!3m2!1sid!2sid!4v1762154036053!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div><!-- End Google Maps -->
 
           <div class="col-lg-6">
@@ -787,10 +834,10 @@
             <span class="sitename">SIGAP Pangan</span>
           </a>
           <div class="footer-contact pt-3">
-            <p>Jl. Merdeka No. 123</p>
-            <p>Jakarta Pusat, DKI Jakarta 10110</p>
-            <p class="mt-3"><strong>Telepon:</strong> <span>+62 21 1234 5678</span></p>
-            <p><strong>Email:</strong> <span>info@sigappangan.id</span></p>
+            <p>Jalan Jaksa Agung R. Soeprapto No. 19</p>
+            <p>Padang, Sumatera Barat</p>
+            <p class="mt-3"><strong>Telepon:</strong> <span>(0751) 7054161</span></p>
+            <p><strong>Email:</strong> <span>dinaspangansumbar@gmail.com</span></p>
           </div>
           <div class="social-links d-flex mt-4">
             <a href=""><i class="bi bi-twitter-x"></i></a>
@@ -821,18 +868,6 @@
             <li><a href="#">Konsultasi & Pelatihan</a></li>
           </ul>
         </div>
-
-        <div class="col-lg-4 col-md-12 footer-newsletter">
-          <h4>Newsletter Kami</h4>
-          <p>Dapatkan informasi terbaru tentang analisis ketahanan pangan dan update platform SIGAP Pangan</p>
-          <form action="forms/newsletter.php" method="post" class="php-email-form">
-            <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Berlangganan"></div>
-            <div class="loading">Memuat</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Permintaan berlangganan Anda telah terkirim. Terima kasih!</div>
-          </form>
-        </div>
-
       </div>
     </div>
 
